@@ -1,5 +1,6 @@
 package com.android.rahul.nirmesh.communicatingwithuser.Dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -11,8 +12,14 @@ public class SimpleDialogFragment extends DialogFragment {
 
     private final String TAG = "AUC_SIMPLE";
 
-    // TODO: Implement an interface for hosts to get callbacks
+    private SimpleDialogListener mHost;
 
+    // TODO: Implement an interface for hosts to get callbacks
+    public interface SimpleDialogListener {
+        public void onPositiveResult(DialogFragment dialogFragment);
+        public void onNegativeResult(DialogFragment dialogFragment);
+        public void onNeutralResult(DialogFragment dialogFragment);
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -27,6 +34,7 @@ public class SimpleDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.i(TAG,"You are Herbivore.");
+                mHost.onPositiveResult(SimpleDialogFragment.this);
             }
         });
 
@@ -34,6 +42,7 @@ public class SimpleDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.i(TAG,"You are Carnivore.");
+                mHost.onNegativeResult(SimpleDialogFragment.this);
             }
         });
 
@@ -41,6 +50,7 @@ public class SimpleDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.i(TAG,"You are Omnivore.");
+                mHost.onNeutralResult(SimpleDialogFragment.this);
             }
         });
 
@@ -55,6 +65,10 @@ public class SimpleDialogFragment extends DialogFragment {
         Log.i(TAG, "Dialog Cancelled.");
     }
 
-
     // TODO: Override onAttach to get Activity instance
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mHost = (SimpleDialogListener) activity;
+    }
 }

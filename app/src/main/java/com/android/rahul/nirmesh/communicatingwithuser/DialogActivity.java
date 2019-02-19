@@ -1,6 +1,7 @@
 package com.android.rahul.nirmesh.communicatingwithuser;
 
 import android.app.DatePickerDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,8 @@ import com.android.rahul.nirmesh.communicatingwithuser.Dialogs.SingleChoiceDialo
 
 import java.util.Calendar;
 
-public class DialogActivity extends AppCompatActivity implements View.OnClickListener {
+public class DialogActivity extends AppCompatActivity
+        implements View.OnClickListener, SimpleDialogFragment.SimpleDialogListener {
 
     private final String TAG = "AUC_DLG_ACTIVITY";
 
@@ -79,5 +81,18 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         complexDialog.show(getSupportFragmentManager(),"SingleChoiceDialogFragment");
     }
 
-    //TODO: implement dialog listener interface functions
+    @Override
+    public void onPositiveResult(DialogFragment dialogFragment) {
+        Log.i(TAG, "Dialog Positive Result");
+    }
+
+    @Override
+    public void onNegativeResult(DialogFragment dialogFragment) {
+        Log.i(TAG, "Dialog Negative Result");
+    }
+
+    @Override
+    public void onNeutralResult(DialogFragment dialogFragment) {
+        Log.i(TAG, "Dialog Neutral Result");
+    }
 }
