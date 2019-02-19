@@ -1,9 +1,11 @@
 package com.android.rahul.nirmesh.communicatingwithuser;
 
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class SnackbarActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,6 +44,21 @@ public class SnackbarActivity extends AppCompatActivity implements View.OnClickL
 
     private void showActionSnackbar() {
         // TODO: Create a snackbar that has an action item
+        Snackbar snackbar = Snackbar.make(
+                findViewById(R.id.myCoordinatorLayout),
+                "This is a Snackbar",
+                Snackbar.LENGTH_LONG
+        );
 
+        snackbar.setAction("My Action", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SnackbarActivity.this, "Toast via Snackbar Action", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        snackbar.setActionTextColor(Color.RED);
+
+        snackbar.show();
     }
 }
