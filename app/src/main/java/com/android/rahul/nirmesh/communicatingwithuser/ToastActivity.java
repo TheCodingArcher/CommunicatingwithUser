@@ -2,6 +2,7 @@ package com.android.rahul.nirmesh.communicatingwithuser;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -31,19 +32,20 @@ public class ToastActivity extends AppCompatActivity implements View.OnClickList
 
     private void showToast() {
         int toastDuration;
-        RadioButton rbShort = (RadioButton)findViewById(R.id.rbShort);
+        RadioButton rbShort = findViewById(R.id.rbShort);
         if (rbShort.isChecked())
             toastDuration = Toast.LENGTH_SHORT;
         else
             toastDuration = Toast.LENGTH_LONG;
 
-        // TODO: Create and show the toast message
-
+        Toast toast =  Toast.makeText(this, "This is a Simple Toast", toastDuration);
+        toast.setGravity(Gravity.CENTER, 0, 0); // Changing Gravity
+        toast.show();
     }
 
     private void showCustomToast() {
         int toastDuration;
-        RadioButton rbShort = (RadioButton)findViewById(R.id.rbShort);
+        RadioButton rbShort = findViewById(R.id.rbShort);
         if (rbShort.isChecked())
             toastDuration = Toast.LENGTH_SHORT;
         else
