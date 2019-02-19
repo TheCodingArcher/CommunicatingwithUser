@@ -54,12 +54,10 @@ public class ToastActivity extends AppCompatActivity implements View.OnClickList
         else
             toastDuration = Toast.LENGTH_LONG;
 
-        // TODO: Get the custom layout and inflate it
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast_layout,
                 (ViewGroup) findViewById(R.id.customToastLayout));
 
-        // TODO: Build a toast message that uses the custom layout
         TextView textContent = layout.findViewById(R.id.textContent);
         textContent.setText("This is a Custom Toast.");
 

@@ -14,7 +14,6 @@ public class SimpleDialogFragment extends DialogFragment {
 
     private SimpleDialogListener mHost;
 
-    // TODO: Implement an interface for hosts to get callbacks
     public interface SimpleDialogListener {
         public void onPositiveResult(DialogFragment dialogFragment);
         public void onNegativeResult(DialogFragment dialogFragment);
@@ -23,10 +22,8 @@ public class SimpleDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        //TODO: Create an AlertDialog.Builder instance
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        //TODO: Set builder properties
         builder.setTitle("Meal Preference");
         builder.setMessage("Are You Vegetarian?");
 
@@ -54,18 +51,15 @@ public class SimpleDialogFragment extends DialogFragment {
             }
         });
 
-        // TODO: return the created dialog
         return builder.create();
     }
 
-    // TODO: Listen for cancel message by overriding onCancel
     @Override
     public void onCancel(DialogInterface dialog) {
         super.onCancel(dialog);
         Log.i(TAG, "Dialog Cancelled.");
     }
 
-    // TODO: Override onAttach to get Activity instance
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

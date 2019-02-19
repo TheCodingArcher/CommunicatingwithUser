@@ -33,7 +33,6 @@ public class SnackbarActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void showSnackbar() {
-        // TODO: Create and show the snackbar
         Snackbar snackbar = Snackbar.make(
                 findViewById(R.id.myCoordinatorLayout),
                 "This is a Snackbar",
@@ -43,7 +42,6 @@ public class SnackbarActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void showActionSnackbar() {
-        // TODO: Create a snackbar that has an action item
         Snackbar snackbar = Snackbar.make(
                 findViewById(R.id.myCoordinatorLayout),
                 "This is a Snackbar",

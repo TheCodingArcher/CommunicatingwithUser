@@ -12,8 +12,6 @@ public class NotificationResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_result);
 
-        // When launched from an addAction Intent, we must manually cancel
-        // the notification otherwise it will stay in the status bar
         Intent intent = getIntent();
         int notifyID = intent.getIntExtra("notifyID", 0);
 

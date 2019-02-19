@@ -19,11 +19,9 @@ public class CustomDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        // TODO: Create the custom layout using the LayoutInflater class
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.custom_dialog_layout, null);
 
-        // TODO: Build the dialog
         builder.setTitle("Please enter your name")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override

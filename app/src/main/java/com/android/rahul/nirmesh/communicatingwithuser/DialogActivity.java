@@ -24,7 +24,6 @@ public class DialogActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
 
-        // set up button click handlers
         findViewById(R.id.btnSimpleDialog).setOnClickListener(this);
         findViewById(R.id.btnShowDatePicker).setOnClickListener(this);
         findViewById(R.id.btnShowChoiceDialog).setOnClickListener(this);
@@ -38,10 +37,8 @@ public class DialogActivity extends AppCompatActivity
                 showSimpleDialog();
                 break;
             case R.id.btnShowDatePicker:
-                // TODO: Get a calendar instance
                 Calendar calendar = Calendar.getInstance();
 
-                // TODO: Create a DatePickerDialog
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -49,7 +46,6 @@ public class DialogActivity extends AppCompatActivity
                     }
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
-                // TODO: Set the title and show the dialog
                 datePickerDialog.setTitle("Choose a Date");
                 datePickerDialog.show();
                 break;
@@ -65,7 +61,6 @@ public class DialogActivity extends AppCompatActivity
     private void showSimpleDialog() {
         SimpleDialogFragment simpleDialog = new SimpleDialogFragment();
 
-        // TODO: Use setCancelable() to make the dialog non-cancelable
         simpleDialog.setCancelable(false);
 
         simpleDialog.show(getSupportFragmentManager(), "SimpleDialogFragment");
