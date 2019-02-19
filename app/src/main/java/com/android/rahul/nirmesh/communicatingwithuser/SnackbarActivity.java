@@ -1,5 +1,6 @@
 package com.android.rahul.nirmesh.communicatingwithuser;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,12 @@ public class SnackbarActivity extends AppCompatActivity implements View.OnClickL
 
     private void showSnackbar() {
         // TODO: Create and show the snackbar
-
+        Snackbar snackbar = Snackbar.make(
+                findViewById(R.id.myCoordinatorLayout),
+                "This is a Snackbar",
+                Snackbar.LENGTH_LONG
+        );
+        snackbar.show();
     }
 
     private void showActionSnackbar() {
