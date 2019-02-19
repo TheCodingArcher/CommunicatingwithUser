@@ -6,6 +6,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+
+import com.android.rahul.nirmesh.communicatingwithuser.R;
 
 public class CustomDialogFragment extends DialogFragment {
 
@@ -16,7 +20,8 @@ public class CustomDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         // TODO: Create the custom layout using the LayoutInflater class
-
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.custom_dialog_layout, null);
 
         // TODO: Build the dialog
         builder.setTitle("Please enter your name")
@@ -31,7 +36,7 @@ public class CustomDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         Log.i(TAG, "Cancel clicked");
                     }
-                });
+                }).setView(view);
 
         return builder.create();
     }
