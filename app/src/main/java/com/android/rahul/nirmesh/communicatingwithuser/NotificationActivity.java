@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.view.View;
 public class NotificationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int NOTIFY_ID = 1001;
+    private static final String NOTIFICATION_CHANNEL_ID = "my_notification_channel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
 
     private void createNotification() {
         // TODO: create the NotificationCompat Builder
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
 
         // TODO: Create the intent that will start the ResultActivity when the user
         // taps the notification or chooses an action button
@@ -75,19 +77,21 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         // For API Level above 23
         Notification notification = builder.build();
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            builder.setChannelId("com.android.rahul.nirmesh.communicatingwithuser");
-        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(
-                    "com.android.rahul.nirmesh.communicatingwithuser",
+                    NOTIFICATION_CHANNEL_ID,
                     "App Notifying",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
 
-            if (notificationManager != null) {
-                notificationManager.createNotificationChannel(notificationChannel);
-            }
+            // Configure the notification channel.
+            notificationChannel.setDescription("Channel description");
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            notificationChannel.enableVibration(true);
+            notificationManager.createNotificationChannel(notificationChannel);
         }
         notificationManager.notify(NOTIFY_ID, notification);
     }
