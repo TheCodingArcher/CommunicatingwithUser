@@ -3,8 +3,11 @@ package com.android.rahul.nirmesh.communicatingwithuser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ToastActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,9 +55,18 @@ public class ToastActivity extends AppCompatActivity implements View.OnClickList
             toastDuration = Toast.LENGTH_LONG;
 
         // TODO: Get the custom layout and inflate it
-
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast_layout,
+                (ViewGroup) findViewById(R.id.customToastLayout));
 
         // TODO: Build a toast message that uses the custom layout
+        TextView textContent = layout.findViewById(R.id.textContent);
+        textContent.setText("This is a Custom Toast.");
 
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(toastDuration);
+        toast.setGravity(Gravity.BOTTOM | Gravity.LEFT, 100, 100);
+        toast.setView(layout);
+        toast.show();
     }
 }
