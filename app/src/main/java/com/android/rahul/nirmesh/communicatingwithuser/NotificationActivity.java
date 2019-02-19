@@ -72,7 +72,9 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         builder.addAction(R.mipmap.ic_launcher, "Action 2", pendingIntent);
 
         // TODO: Set the lock screen visibility of the notification
-
+        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+//        builder.setVisibility(Notification.VISIBILITY_SECRET);  // for Secret Notifications
+//        builder.setVisibility(Notification.VISIBILITY_PRIVATE); // for Private Notifications
 
         // TODO: Build the finished notification and then display it to the user
         // Works like a Charm below API level 23
