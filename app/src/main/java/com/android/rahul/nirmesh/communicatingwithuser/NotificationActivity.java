@@ -33,6 +33,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         // TODO: Create the intent that will start the ResultActivity when the user
         // taps the notification or chooses an action button
         Intent intent = new Intent(this, NotificationResultActivity.class);
+        intent.putExtra("notifyID", NOTIFY_ID);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 this,
                 NOTIFY_ID,
@@ -60,10 +61,15 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         builder.setContentIntent(pendingIntent);
 
         // TODO: Add an expanded layout to the notification
-
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
+        bigTextStyle.setBigContentTitle("This is Big Notification");
+        bigTextStyle.bigText(getResources().getString(R.string.LongMsg));
+        builder.setStyle(bigTextStyle);
 
         // TODO: Add action buttons to the Notification if they are supported
         // Use the same PendingIntent as we use for the main notification action
+        builder.addAction(R.mipmap.ic_launcher, "Action 1", pendingIntent);
+        builder.addAction(R.mipmap.ic_launcher, "Action 2", pendingIntent);
 
         // TODO: Set the lock screen visibility of the notification
 
