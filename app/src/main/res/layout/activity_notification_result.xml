@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationActivity">
+    tools:context=".NotificationResultActivity">
 
-    <Button
-        android:id="@+id/btnNotification"
-        android:text="Show Notification"
+    <TextView
+        android:id="@+id/textView2"
+        android:text="This activity was launched as the result of a Notification"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

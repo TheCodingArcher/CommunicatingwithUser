@@ -19,7 +19,8 @@
         <activity android:name=".ToastActivity" />
         <activity android:name=".SnackbarActivity" />
         <activity android:name=".DialogActivity" />
-        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".NotificationResultActivity" />
     </application>
 
 </manifest>
